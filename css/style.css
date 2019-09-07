@@ -164,7 +164,7 @@ width: 100%;
   position: absolute;
   z-index: 1000;
   max-height: 0;
- left: 20px;
+ left: 9px;
   font-size: 15px;
   font-weight: 300;
   background-color: rgba(255, 255, 255, 0.555);
@@ -174,4 +174,10 @@ width: 100%;
   -webkit-transition: .8s all .3s;
   transition: .8s all .3s;
   text-align: center;
+}
+
+.psgmouse:hover{
+ font-weight: bold;
+ color: rgb(146, 1, 1);
+ cursor: grab;
 }
