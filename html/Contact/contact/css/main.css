@@ -52,7 +52,8 @@
 
 body, html {
 	height: 100%;
-	font-family: Poppins-Regular, sans-serif;
+  font-family: Poppins-Regular, sans-serif;
+
 }
 
 /*---------------------------------------------*/
@@ -208,6 +209,7 @@ iframe {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  position: relative;
   align-items: center;
   background: #f2f2f2;
   
@@ -435,6 +437,7 @@ textarea.input100 {
   }
 
   .contact100-more {
+    z-index: 0;
     display: none;
   }
 }
@@ -654,4 +657,14 @@ textarea.input100 {
 
 .wrap-input100 .dropDownSelect2 .select2-dropdown {
   width: calc(100% + 2px) !important;
+}
+
+.home {
+  /* height: 14%; */
+  width: 10%;
+  /* pointer-events: fill; */
+  /* margin-right: 140vh; */
+  top: 15px;
+  left: 0;
+  position: absolute;
 }
