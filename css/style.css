@@ -181,3 +181,13 @@ width: 100%;
  color: rgb(146, 1, 1);
  cursor: grab;
 }
+.regle {
+ 
+  height: 54%;
+  width: 80%;
+  position: fixed;
+  bottom: 5px;
+  left: 460px;
+ 
+}
+
