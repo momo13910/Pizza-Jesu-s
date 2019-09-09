@@ -9,7 +9,7 @@ let selection = $('#select');
 valider.click(() => {
 
     $.ajax({
-        url: 'http://localhost/Pizza-Jesu-s/php/mail.php',
+        url: 'http://localhost/pizza-Jesu-s/php/mail.php',
         type: 'POST',
         data: {
 
@@ -34,8 +34,5 @@ valider.click(() => {
         }
 
     })
-
-
-
 });
 
