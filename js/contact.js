@@ -2,18 +2,21 @@ let name = $('#name');
 let email = $('#email');
 let message = $('#message');
 let valider = $('#valider');
+let selection = $('#select');
+
 
 
 valider.click(() => {
 
     $.ajax({
-        url: 'localhost/Pizza-Jesu-s/php/mail.php',
+        url: 'http://localhost/Pizza-Jesu-s/php/mail.php',
         type: 'POST',
         data: {
 
             name: name.val(),
             email: email.val(),
-            messag: message.val()
+            message: message.val(),
+            selection:selection.val()
 
 
         },
