@@ -10,13 +10,16 @@ valider.click(() => {
 
     $.ajax({
         url: 'http://localhost/Pizza-Jesu-s/php/mail.php',
+        url: 'localhost/Pizza-Jesu-s/php/mail.php',
         type: 'POST',
         data: {
 
             name: name.val(),
             email: email.val(),
             message: message.val(),
-            selection:selection.val()
+            selection:selection.val(),
+
+            messag: message.val()
 
 
         },
@@ -33,4 +36,7 @@ valider.click(() => {
 
     })
 
+
 });
+});
+
