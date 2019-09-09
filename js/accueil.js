@@ -31,7 +31,7 @@ function jesus(num) {
             savoyarde.css('background', '');
             orient.css('background', '');
             napolitaine.css('background', '');
-            image.css('background', 'url(/img/1.jpg) no-repeat');
+            image.css('background', 'url(img/1.png) no-repeat');
             break;
         case 2:
             margua.css('background', '');
