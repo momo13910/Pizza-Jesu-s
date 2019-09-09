@@ -10,7 +10,6 @@ valider.click(() => {
 
     $.ajax({
         url: 'http://localhost/Pizza-Jesu-s/php/mail.php',
-        url: 'localhost/Pizza-Jesu-s/php/mail.php',
         type: 'POST',
         data: {
 
@@ -37,6 +36,6 @@ valider.click(() => {
     })
 
 
-});
+
 });
 
