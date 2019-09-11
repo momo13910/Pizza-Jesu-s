@@ -53,7 +53,7 @@ function display_pizza($connect) {
         <div class="container">
        
             <br />
-            <form method="POST" id="insert_form" enctype="multipart/form-data">
+            <form action="http://localhost/Pizza-Jesu-s/php/message.php"  method="POST" id="insert_form" enctype="multipart/form-data">
                 <div class="table-repsonsive">
                     <span id="error"></span>
                     <table class="table table-bordered" id="item_table">
@@ -73,7 +73,7 @@ function display_pizza($connect) {
                     <div align="center">
                         <input id="submit" type="button" name="submit" class="btn btn-info" value="Insérer" />
                     </div>
-                    
+                    <input  name="valider" value="Lire les messages"  type="submit" >
                 </div>
             </form>
         </div>
