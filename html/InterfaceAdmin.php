@@ -39,6 +39,7 @@ function display_pizza($connect) {
     <meta charset=" UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="../css/interface.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -47,12 +48,15 @@ function display_pizza($connect) {
 
 <body>
     <div id="content">
+       
         <a id="home" href="../index.html">
-            <img class="home" src="http://homepizza-stmemmie.fr/wp-content/uploads/2017/05/logo-1.png" alt="" /></a>
+            <img class="home" src="http://homepizza-stmemmie.fr/wp-content/uploads/2017/05/logo-1.png" alt="" />
+        </a>
         <br />
         <div class="container">
+       
             <br />
-            <form method="post" id="insert_form">
+            <form method="POST" id="insert_form" enctype="multipart/form-data">
                 <div class="table-repsonsive">
                     <span id="error"></span>
                     <table class="table table-bordered" id="item_table">
@@ -70,11 +74,13 @@ function display_pizza($connect) {
                         </tr>
                     </table>
                     <div align="center">
-                        <input type="submit" name="submit" class="btn btn-info" value="Insérer" />
+                        <input id="submit" type="button" name="submit" class="btn btn-info" value="Insérer" />
                     </div>
+                    
                 </div>
             </form>
         </div>
+        
     </div>
 
 
@@ -87,13 +93,13 @@ function display_pizza($connect) {
             let html = '';
             html += '<tr>';
             html +=
-                '<td><input type="text" name="nom" class="form-control nom" /></td>';
+                '<td><input type="text" name="nom" class="form-control nom" required /></td>';
             html +=
-                '<td><input type="text" name="description" class="form-control description" /></td>';
+                '<td><input type="text" name="description" class="form-control description" required /></td>';
             html +=
-                '<td><input type="text" name="prix" class="form-control prix" /></td>';
+                '<td><input type="text" name="prix" class="form-control prix" required /></td>';
             html +=
-                '<td><input type="file" name="image" class="form-control image" /></td>';
+                '<td><input type="file" name="image" class="form-control image" required /></td>';
 
             html +=
                 '<td><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="glyphicon glyphicon-minus">-</span></button></td></tr>';
@@ -105,7 +111,7 @@ function display_pizza($connect) {
                 .closest('tr')
                 .remove();
 
-            let pizza_name = $(this).closest('tr')[0].childNodes[1].innerHTML;
+            let pizza_name = $(this).closest('tr')[0].childNodes[1].innerHTML;            
             
             $.ajax({
                 url: '../php/delete.php',
@@ -119,13 +125,27 @@ function display_pizza($connect) {
             });
         });
 
-        $('#insert_form').on('submit', function(event) {
-            event.preventDefault();
-            var error = '';
+        $('#submit').on('click', function(event) {
+            var files = $('.image')[0].files;
+            let error = '';
+            let file = null;
+            if (files) {
+                file = files[0];
+            } else {
+                error += '<p>Image manquante</p>';
+                afficheErreur(error);
+                return;
+            }
+
+            if($.inArray(file.type,['image/gif','image/jpg','image/jpeg','image/png']) == -1){
+                alert("Invalid image file");
+            }
+
             $('.nom').each(function() {
                 var count = 1;
                 if ($(this).val() == '') {
                     error += '<p>Entrer le nom à la ligne ' + count + '</p>';
+                    afficheErreur(error);
                     return false;
                 }
                 count = count + 1;
@@ -135,6 +155,7 @@ function display_pizza($connect) {
                 var count = 1;
                 if ($(this).val() == '') {
                     error += '<p>Entrer la description à la ligne ' + count + '</p>';
+                    afficheErreur(error);
                     return false;
                 }
                 count = count + 1;
@@ -144,6 +165,7 @@ function display_pizza($connect) {
                 var count = 1;
                 if ($(this).val() == '') {
                     error += '<p>Entrer le prix à la ligne ' + count + '</p>';
+                    afficheErreur(error);
                     return false;
                 }
                 count = count + 1;
@@ -153,28 +175,43 @@ function display_pizza($connect) {
                 var count = 1;
                 if ($(this).val() == '') {
                     error += '<p>Ajouter une image à la ligne ' + count + '</p>';
+                    afficheErreur(error);
                     return false;
                 }
                 count = count + 1;
             });
             
             if (error == '') {
+                var form_data = new FormData();
+                form_data.append("file", file);
+                form_data.append("nom", $('.nom').val());
+                form_data.append("description", $('.description').val());
+                form_data.append("prix", $('.prix').val());
+
                 $.ajax({
                     url: '../php/insert.php',
                     method: 'POST',
-                    data: {
-                        nom: $('.nom').val(),
-                        description: $('.description').val(),
-                        prix: $('.prix').val(),
-                        image: $('.image').val()
-                    },
+                    data: form_data,
+                    contentType:false,
+                    cache:false,
+                    processData:false,
                     success: function(data) {
-                        alert("Entrée ajouté");
+                        alert(data);
+                        document.location.reload(true);
+                    },
+                    error: function error (result) {
+                        console.log(result);
                     }
                 });
+            } else {
+                alert(error);
             }
         });
 
+
+        function afficheErreur (erreur) {
+            alert(erreur);
+        }
 /*         $('.remove').click(()=>{
             $.ajax({
             url:'../'

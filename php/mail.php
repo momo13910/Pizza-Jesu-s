@@ -6,7 +6,10 @@ $selection = $_POST['selection'];
 
 if(!$name || !$mail || !$message || !$selection) {
     echo 'Veuillez remplir tous les champs S.V.P !';
-    exit();
+    
+}else{
+    
+    echo("Votre message a été envoyé!");
 }
 
 
