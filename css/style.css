@@ -97,7 +97,16 @@ html {
     justify-content: center;
     align-items: center;
     height: 10vh;
+    position: relative;
     
+}
+.enseigne {
+  filter: contrast(0.2);
+  filter: brightness(0.5);
+  /* margin-top: 200px; */
+  top: 20px;
+  position: absolute;
+  width: 125px;
 }
 #parent{
 
@@ -154,12 +163,7 @@ width: 100%;
     max-height:100em;
     }
     
-   .enseigne{
 
-    filter: contrast(0.2);
-  filter: brightness(0.5);
-    margin-top: 200px;
-}
 .commande ul{
   position: absolute;
   z-index: 1000;
