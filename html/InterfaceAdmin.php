@@ -104,21 +104,24 @@ function display_pizza($connect) {
         });
 
         $(document).on('click', '.remove', function() {
-            $(this)
-                .closest('tr')
-                .remove();
+            if (confirm("Êtes-vous sûr de vouloir supprimer ?")) {
+                $(this)
+                    .closest('tr')
+                    .remove();
+    
+                let pizza_name = $(this).closest('tr')[0].childNodes[1].innerHTML;   
+                         
+                $.ajax({
+                    url: '../php/delete.php',
+                    method: 'POST',
+                    data: {
+                        nom: pizza_name
+                    },
+                    success: function(data) {
 
-            let pizza_name = $(this).closest('tr')[0].childNodes[1].innerHTML;            
-            
-            $.ajax({
-                url: '../php/delete.php',
-                method: 'POST',
-                data: {
-                    nom: pizza_name
-                },
-                success: function(data) {
-                }
-            });
+                    }
+                });
+            }
         });
 
         $('#submit').on('click', function(event) {

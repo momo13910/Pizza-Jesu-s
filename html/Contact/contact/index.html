@@ -29,12 +29,11 @@
 <!--===============================================================================================-->
 </head>
 <body>
-
-
+	
 	<div class="container-contact100">
 		
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
+			<form method="GET" action="../../../php/mail.php" class="contact100-form validate-form">
 				<span class="contact100-form-title">
 					Contactez-nous
 				</span>
@@ -42,7 +41,7 @@
 
 				<div class="wrap-input100 validate-input" data-validate="Name is required">
 					<label class="label-input100" for="name">Nom</label>
-					<input id="name" class="input100" type="text" name="name" placeholder="Entrer votre nom...">
+					<input id="name" class="input100" type="text" name="nom" placeholder="Entrer votre nom...">
 					<span class="focus-input100"></span>
 				</div>
 
@@ -56,7 +55,7 @@
 				<div class="wrap-input100">
 					<div class="label-input100">De quoi avez-vous besoin?</div>
 					<div>
-						<select id="select" class="js-select2" name="service">
+						<select id="select" class="js-select2" name="selection">
 							<option>Faites votre choix</option>
 							<option>Réclamation</option>
 							<option>Suggestion</option>
@@ -75,7 +74,7 @@
 				</div>
 
 				<div class="container-contact100-form-btn">
-					<button id="valider" class="contact100-form-btn">
+					<button  name="valider"  id="valider" class="contact100-form-btn">
 						Valider
 					</button>
 				</div>
