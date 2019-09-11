@@ -14,14 +14,11 @@ function display_pizza($connect) {
     <td>'.$row["nom"].'</td>
     <td>'.$row["description"].'</td>
     <td>'.$row["prix"].'</td>
-    <td>'.$row["image"].'</td>
+    <td> <img class="img_pizza" src="../img/'.$row["image"].'"/></td>
     <td><button type="button" name="remove" class="btn btn-danger btn-sm remove"><span class="glyphicon glyphicon-minus">-</span></button></td>
     </tr>';
  }
- function remove() {
 
-        
-}
  $statement->close();
  $connect->close();
  return $output;
@@ -120,7 +117,6 @@ function display_pizza($connect) {
                     nom: pizza_name
                 },
                 success: function(data) {
-                    alert("Entrée supprimée");
                 }
             });
         });
@@ -196,7 +192,6 @@ function display_pizza($connect) {
                     cache:false,
                     processData:false,
                     success: function(data) {
-                        alert(data);
                         document.location.reload(true);
                     },
                     error: function error (result) {
@@ -212,14 +207,7 @@ function display_pizza($connect) {
         function afficheErreur (erreur) {
             alert(erreur);
         }
-/*         $('.remove').click(()=>{
-            $.ajax({
-            url:'../'
-            method:
-            data:
 
-            }); 
-        });*/
     });
    
 

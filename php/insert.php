@@ -18,7 +18,5 @@ if (isset($_POST)) {
     $sql->execute();
     $sql->close();
     $connect->close();
-
-    echo "Ajout réussi !";
 }
 ?>
