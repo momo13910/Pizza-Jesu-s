@@ -8,11 +8,11 @@
     
     while ($ligne = $resultat->fetch_assoc()) {
     
-        echo $ligne['nom'].' '.$ligne['email'].' '.$ligne['reclamation'].' ';
+        echo $ligne['nom'].'<br> '.$ligne['email'].'<br> '.$ligne['reclamation'].' ';
         echo $ligne['message'].'<br>';
        
     }
 
     $mysqli->close();
-    }
+}
 ?>
