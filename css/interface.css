@@ -19,6 +19,34 @@
   justify-content: center;
 }
 
-.button-group > input, button {
+.button-group > input,
+button {
   margin: 0 1.5rem;
+}
+
+#messages {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgb(241, 241, 241);
+}
+
+#messages h1 {
+  margin: 2rem;
+  margin-top: 4rem;
+}
+
+.message {
+  width: 100%;
+  height: auto;
+  
+}
+
+.message div {
+  margin: 1.5rem;
+}
+
+.texte {
+  border-bottom: solid 1px black;
 }

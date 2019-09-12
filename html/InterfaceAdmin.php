@@ -53,6 +53,7 @@ function display_pizza($connect) {
         <div class="container">
        
             <br />
+
             <form action="http://localhost/Pizza-Jesu-s/php/message.php"  method="POST" id="insert_form" enctype="multipart/form-data">
                 <div class="table-repsonsive">
                     <span id="error"></span>
@@ -71,15 +72,34 @@ function display_pizza($connect) {
                         </tr>
                     </table>
                     <div align="center">
-                        <input id="submit" type="button" name="submit" class="btn btn-info" value="Insérer" />
+                        <input id="submit" type="button" name="submit" class="btn btn-info mb-5" value="Insérer" />
                     </div>
-                    <input  name="valider" value="Lire les messages"  type="submit" >
                 </div>
             </form>
         </div>
         
     </div>
 
+    <div id="messages">
+        <h1>Messages</h1>
+        <?php
+            $mysqli = new mysqli('localhost', 'root', '', 'pizzeria');
+            $mysqli->set_charset("utf8");
+            $requete = 'SELECT * FROM contact';
+            $resultat = $mysqli->query($requete);
+            
+            while ($ligne = $resultat->fetch_assoc()) {
+            
+                echo "<div class='message'>
+                    <div class='nom'>" . $ligne['nom'] . "<br>" . $ligne['email'] . "<br>" . $ligne['reclamation'] . "</div>
+                    <div class='texte'>" . $ligne['message'] . "</div>
+                </div>";
+            
+            }
+
+            $mysqli->close();
+        ?>
+    </div>
 
     <script>
     $(document).ready(function() {

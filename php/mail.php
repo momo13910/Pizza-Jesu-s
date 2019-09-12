@@ -23,7 +23,7 @@ if  (isset($_GET['valider'])) {
    $sql->close();
     $connect->close();
     echo 'VOTRE MESSAGE A ETE ENVOYE';
-    header("refresh:5;url=../index.html");
+    header("refresh:3;url=../index.html");
     exit();
     
 }
